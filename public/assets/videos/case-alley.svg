@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="雨巷案件视频素材">
-  <rect width="1280" height="720" fill="#090d1a"/>
-  <path d="M0 520 C260 470 430 540 650 500 C880 456 1040 502 1280 450 L1280 720 L0 720 Z" fill="#111827"/>
+  <rect width="1280" height="720" fill="#080513"/>
+  <path d="M0 520 C260 470 430 540 650 500 C880 456 1040 502 1280 450 L1280 720 L0 720 Z" fill="#10111a"/>
   <g stroke="#4fd1c5" opacity=".28"><path d="M80 0L20 720M220 0L160 720M360 0L300 720M520 0L460 720M700 0L640 720M900 0L840 720M1100 0L1040 720"/></g>
-  <rect x="140" y="120" width="300" height="380" fill="#151b32" stroke="#334155"/>
-  <rect x="850" y="90" width="260" height="360" fill="#10162b" stroke="#334155"/>
+  <rect x="140" y="120" width="300" height="380" fill="#10111a" stroke="#43305e"/>
+  <rect x="850" y="90" width="260" height="360" fill="#0d0a18" stroke="#43305e"/>
   <path d="M580 300 c88 -98 202 -96 282 0 z" fill="#FFD93D" opacity=".86"/>
   <line x1="720" y1="300" x2="716" y2="500" stroke="#FFD93D" stroke-width="5"/>
-  <rect x="708" y="418" width="110" height="44" rx="6" fill="#1f2937" stroke="#94a3b8"/>
-  <path d="M702 338 c34 8 52 44 48 84 c-3 38 -24 72 -58 82" fill="none" stroke="#4fd1c5" stroke-width="8"/>
-  <text x="40" y="60" fill="#FFD93D" font-family="Arial" font-size="28">CAM ALLEY · 01:06</text>
-  <text x="40" y="98" fill="#94a3b8" font-family="Arial" font-size="20">RAIN / LOW VISIBILITY</text>
+  <rect x="708" y="418" width="110" height="44" rx="6" fill="#15101f" stroke="#94a3b8"/>
+  <path d="M702 338 c34 8 52 44 48 84 c-3 38 -24 72 -58 82" fill="none" stroke="#d946ef" stroke-width="8"/>
+  <text x="40" y="60" fill="#ff184f" font-family="Arial" font-size="28">CAM ALLEY · 01:06</text>
+  <text x="40" y="98" fill="#c4b5fd" font-family="Arial" font-size="20">RAIN / LOW VISIBILITY</text>
 </svg>

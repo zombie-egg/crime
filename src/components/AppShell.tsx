@@ -12,22 +12,23 @@ export default function AppShell() {
 
   return (
     <div className={`${theme} min-h-screen bg-background text-foreground`}>
-      <div className="fixed inset-0 -z-10 bg-[#f7f3e8]" />
-      <div className="fixed inset-0 -z-10 mondrian-paper opacity-80" />
-      <header className="sticky top-0 z-40 border-b-4 border-black bg-[#f7f3e8]">
+      <div className="fixed inset-0 -z-10 maze-paper opacity-60" />
+      <div className="fixed inset-0 -z-10 horror-vignette" />
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,24,79,0.12),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(174,56,255,0.12),transparent_28%)]" />
+      <header className="sticky top-0 z-40 border-b border-fuchsia-500/30 bg-black/55 backdrop-blur-xl">
         <div className="mx-auto flex min-h-16 max-w-[1440px] items-center justify-between gap-3 px-4 md:px-6">
           <button
             type="button"
-            className="group flex items-stretch border-4 border-black bg-white text-left shadow-[6px_6px_0_#111] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ffd500]"
+            className="group flex items-stretch overflow-hidden rounded-md border border-fuchsia-400/40 bg-white/5 text-left shadow-[0_0_28px_rgba(255,24,79,0.12)] transition-transform hover:-translate-y-0.5"
             onClick={() => navigate("/")}
             aria-label="返回首页"
           >
-            <span className="flex h-12 w-14 items-center justify-center border-r-4 border-black bg-[#e60012] text-lg font-black text-white">
+            <span className="flex h-12 w-14 items-center justify-center border-r border-fuchsia-400/40 bg-gradient-to-br from-[#ff184f] to-[#7c3aed] text-lg font-black text-white">
               ND
             </span>
-            <span className="flex flex-col justify-center px-3">
-              <span className="block text-sm font-black uppercase tracking-wide text-black">Neon Detective</span>
-              <span className="block text-xs font-bold text-neutral-600">AI Case Lab</span>
+            <span className="flex flex-col justify-center px-3 py-1">
+              <span className="block text-sm font-black uppercase tracking-wide text-white">Neon Detective</span>
+              <span className="block text-xs font-semibold text-violet-200/70">horror case interface</span>
             </span>
           </button>
           <div className="flex items-center gap-2">
@@ -50,9 +51,9 @@ export default function AppShell() {
       </header>
       <motion.main
         key={location.pathname}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 6 }}
+        initial={{ opacity: 0, y: 10, scale: 0.99 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 6, scale: 0.99 }}
         transition={{ duration: 0.22, ease: "easeOut" }}
         className="mx-auto max-w-[1440px] px-4 py-5 md:px-6"
       >

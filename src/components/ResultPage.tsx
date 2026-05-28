@@ -43,28 +43,28 @@ export default function ResultPage() {
     <div className="mx-auto max-w-6xl space-y-5">
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.85, 0], scale: [0.92, 1.04, 1] }}
+        animate={{ opacity: [0, 0.55, 0], scale: [0.92, 1.04, 1] }}
         transition={{ duration: 0.7 }}
-        className="pointer-events-none fixed inset-0 z-50 bg-[#ffd500]"
+        className="pointer-events-none fixed inset-0 z-50 bg-gradient-to-br from-[#ff184f]/35 via-[#7c3aed]/20 to-transparent"
       />
-      <section ref={shareRef} className="border-4 border-black bg-white p-6 shadow-[10px_10px_0_#111]">
+      <section ref={shareRef} className="glass rounded-2xl p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <Badge variant="outline" className="mb-3">
               {rankLabel(score.rank)}
             </Badge>
-            <h1 className="text-3xl font-black text-black md:text-5xl">{caseFile.title}</h1>
-            <p className="mt-3 max-w-3xl text-sm font-semibold leading-7 text-neutral-700">{caseFile.endingTexts[score.rank]}</p>
+            <h1 className="text-3xl font-black text-white md:text-5xl neon-text">{caseFile.title}</h1>
+            <p className="mt-3 max-w-3xl text-sm font-semibold leading-7 text-violet-100/72">{caseFile.endingTexts[score.rank]}</p>
           </div>
-          <div className="border-4 border-black bg-[#ffd500] p-5 text-center shadow-[8px_8px_0_#111]">
-            <Trophy className="mx-auto mb-3 h-8 w-8 text-black" />
-            <p className="text-sm font-black text-black">总分</p>
-            <p className="text-5xl font-black text-black">{score.total}</p>
+          <div className="rounded-2xl border border-fuchsia-400/20 bg-black/45 p-5 text-center shadow-[0_0_30px_rgba(255,24,79,0.14)]">
+            <Trophy className="mx-auto mb-3 h-8 w-8 text-[#ff184f]" />
+            <p className="text-sm font-black text-white">总分</p>
+            <p className="text-5xl font-black text-white">{score.total}</p>
             <div className="mt-3 flex justify-center gap-1">
               {Array.from({ length: 5 }).map((_, index) => (
                 <Star
                   key={index}
-                  className={`h-5 w-5 ${index < score.stars ? "fill-black text-black" : "text-black/40"}`}
+                  className={`h-5 w-5 ${index < score.stars ? "fill-[#ff184f] text-[#ff184f]" : "text-violet-200/30"}`}
                 />
               ))}
             </div>
@@ -73,28 +73,28 @@ export default function ResultPage() {
       </section>
 
       <section className="grid gap-4 lg:grid-cols-[1fr_.9fr]">
-        <Card>
+        <Card className="border border-fuchsia-400/20 bg-white/5">
           <CardHeader>
-            <CardTitle>维度评分</CardTitle>
+            <CardTitle className="text-white">维度评分</CardTitle>
             <CardDescription>雷达图展示线索、推理、时间和工具效率。</CardDescription>
           </CardHeader>
           <CardContent className="h-[360px]">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={radarData}>
-                <PolarGrid stroke="black" />
-                <PolarAngleAxis dataKey="subject" tick={{ fill: "#111", fontSize: 12, fontWeight: 700 }} />
-                <Radar dataKey="score" stroke="#0057b8" fill="#e60012" fillOpacity={0.28} />
+                <PolarGrid stroke="rgba(255,255,255,0.14)" />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: "#f5f3ff", fontSize: 12, fontWeight: 700 }} />
+                <Radar dataKey="score" stroke="#ff184f" fill="#7c3aed" fillOpacity={0.32} />
               </RadarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border border-fuchsia-400/20 bg-white/5">
           <CardHeader>
-            <CardTitle>AI导演评语</CardTitle>
+            <CardTitle className="text-white">AI导演评语</CardTitle>
             <CardDescription>根据本次推理结果生成的结案评价。</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="border-4 border-black bg-white p-4 text-sm font-semibold leading-7 text-neutral-700">
+            <p className="rounded-xl border border-fuchsia-400/20 bg-black/35 p-4 text-sm font-semibold leading-7 text-violet-100/75">
               {score.directorComment}
             </p>
             <ScoreLine label="线索完整度" value={score.clueCompleteness} />
@@ -134,11 +134,11 @@ function ScoreLine({ label, value }: { label: string; value: number }) {
   return (
     <div>
       <div className="mb-1 flex items-center justify-between text-sm">
-        <span className="text-neutral-700">{label}</span>
-        <span className="font-black text-black">{value}</span>
+        <span className="text-violet-100/72">{label}</span>
+        <span className="font-black text-white">{value}</span>
       </div>
-      <div className="h-4 overflow-hidden border-4 border-black bg-white">
-        <div className="h-full bg-[#e60012]" style={{ width: `${value}%` }} />
+      <div className="h-3 overflow-hidden rounded-full border border-fuchsia-400/20 bg-black/35">
+        <div className="h-full bg-gradient-to-r from-[#ff184f] via-[#d946ef] to-[#7c3aed]" style={{ width: `${value}%` }} />
       </div>
     </div>
   );

@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="港口案件视频素材">
-  <rect width="1280" height="720" fill="#080d1d"/>
-  <path d="M0 500H1280V720H0z" fill="#111827"/>
-  <g stroke="#334155" opacity=".8">
+  <rect width="1280" height="720" fill="#05030b"/>
+  <path d="M0 500H1280V720H0z" fill="#10111a"/>
+  <g stroke="#43305e" opacity=".8">
     <path d="M120 500V150H260V500M940 500V130H1090V500"/>
     <path d="M260 220H940M260 300H940M260 380H940"/>
   </g>
-  <rect x="510" y="390" width="190" height="82" rx="8" fill="#1d4ed8" stroke="#4fd1c5"/>
-  <rect x="735" y="424" width="170" height="48" rx="6" fill="#334155" stroke="#94a3b8"/>
+  <rect x="510" y="390" width="190" height="82" rx="8" fill="#7c3aed" stroke="#d946ef"/>
+  <rect x="735" y="424" width="170" height="48" rx="6" fill="#15101f" stroke="#94a3b8"/>
   <circle cx="810" cy="472" r="34" fill="#0f172a" stroke="#64748b"/>
   <circle cx="888" cy="472" r="34" fill="#0f172a" stroke="#64748b"/>
-  <circle cx="620" cy="308" r="11" fill="#fb7185"/>
-  <path d="M620 308L990 248" stroke="#fb7185" stroke-width="3" opacity=".65"/>
-  <path d="M406 344 c52 -40 96 -12 106 42 c14 66 -26 108 -82 124" fill="none" stroke="#FFD93D" stroke-width="8"/>
-  <text x="40" y="60" fill="#FFD93D" font-family="Arial" font-size="28">DOCK CAM · 02:15</text>
-  <text x="40" y="98" fill="#94a3b8" font-family="Arial" font-size="20">POWER GAP / RED SIGNAL</text>
+  <circle cx="620" cy="308" r="11" fill="#ff184f"/>
+  <path d="M620 308L990 248" stroke="#ff184f" stroke-width="3" opacity=".65"/>
+  <path d="M406 344 c52 -40 96 -12 106 42 c14 66 -26 108 -82 124" fill="none" stroke="#ff184f" stroke-width="8"/>
+  <text x="40" y="60" fill="#ff184f" font-family="Arial" font-size="28">DOCK CAM · 02:15</text>
+  <text x="40" y="98" fill="#c4b5fd" font-family="Arial" font-size="20">POWER GAP / RED SIGNAL</text>
 </svg>

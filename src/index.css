@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 45 42% 94%;
-    --foreground: 0 0% 4%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 4%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
-    --primary: 50 100% 50%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 100%;
-    --secondary-foreground: 0 0% 4%;
-    --muted: 45 24% 88%;
-    --muted-foreground: 0 0% 28%;
-    --accent: 212 100% 36%;
+    --background: 255 48% 4%;
+    --foreground: 0 0% 96%;
+    --card: 250 35% 8%;
+    --card-foreground: 0 0% 96%;
+    --popover: 250 35% 8%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 351 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 262 35% 15%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 255 20% 16%;
+    --muted-foreground: 252 12% 70%;
+    --accent: 288 100% 62%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 356 100% 45%;
+    --destructive: 0 100% 46%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 4%;
-    --input: 0 0% 4%;
-    --ring: 50 100% 50%;
-    --radius: 0rem;
+    --border: 281 58% 34%;
+    --input: 281 42% 26%;
+    --ring: 351 100% 55%;
+    --radius: 0.5rem;
   }
 
   .light {
-    --background: 218 36% 95%;
-    --foreground: 226 35% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 226 35% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 226 35% 12%;
-    --primary: 47 100% 52%;
-    --primary-foreground: 226 35% 12%;
-    --secondary: 216 24% 88%;
-    --secondary-foreground: 226 35% 12%;
-    --muted: 216 24% 88%;
-    --muted-foreground: 218 15% 38%;
-    --accent: 177 55% 42%;
+    --background: 254 35% 9%;
+    --foreground: 0 0% 96%;
+    --card: 252 34% 12%;
+    --card-foreground: 0 0% 96%;
+    --popover: 252 34% 12%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 351 100% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 264 30% 20%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 258 21% 20%;
+    --muted-foreground: 252 12% 72%;
+    --accent: 292 100% 66%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 350 75% 48%;
+    --destructive: 0 100% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 216 20% 78%;
-    --input: 216 20% 78%;
-    --ring: 47 100% 52%;
+    --border: 286 45% 38%;
+    --input: 286 34% 30%;
+    --ring: 351 100% 58%;
   }
 
   * {
@@ -67,6 +67,10 @@
     @apply bg-background text-foreground antialiased;
     min-width: 320px;
     overflow-y: auto;
+    background:
+      radial-gradient(circle at 12% 16%, rgba(255, 24, 79, 0.22), transparent 28rem),
+      radial-gradient(circle at 86% 8%, rgba(174, 56, 255, 0.24), transparent 30rem),
+      linear-gradient(135deg, #05030b 0%, #10091f 50%, #06020a 100%);
   }
 
   button,
@@ -77,22 +81,43 @@
   }
 
   ::selection {
-    background: rgba(255, 213, 0, 0.5);
+    background: rgba(255, 24, 79, 0.55);
   }
 }
 
 @layer utilities {
   .glass {
-    border: 4px solid #111;
-    background: #fff;
+    border: 1px solid rgba(216, 82, 255, 0.38);
+    background: linear-gradient(145deg, rgba(18, 12, 34, 0.88), rgba(9, 5, 17, 0.92));
+    box-shadow: 0 0 0 1px rgba(255, 24, 79, 0.14), 0 24px 70px rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(18px);
   }
 
-  .mondrian-paper {
+  .maze-paper {
     background-image:
-      linear-gradient(#111 4px, transparent 4px),
-      linear-gradient(90deg, #111 4px, transparent 4px);
-    background-size: 160px 128px;
-    background-position: -4px -4px;
+      linear-gradient(rgba(255, 30, 80, 0.18) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(174, 56, 255, 0.14) 2px, transparent 2px),
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 124px 124px, 124px 124px, 31px 31px, 31px 31px;
+    mask-image: radial-gradient(circle at center, black, transparent 78%);
+  }
+
+  .horror-vignette {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.72), transparent 24%, transparent 76%, rgba(0, 0, 0, 0.72)),
+      radial-gradient(circle at center, transparent 36%, rgba(0, 0, 0, 0.76) 100%);
+  }
+
+  .blood-sheen {
+    background:
+      linear-gradient(135deg, rgba(255, 24, 79, 0.38), transparent 36%),
+      linear-gradient(315deg, rgba(174, 56, 255, 0.3), transparent 42%),
+      rgba(12, 6, 25, 0.88);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 18px rgba(255, 24, 79, 0.8), 0 0 34px rgba(174, 56, 255, 0.45);
   }
 
   .noir-grid {
@@ -125,7 +150,7 @@
     top: -40%;
     height: 38%;
     pointer-events: none;
-    background: linear-gradient(to bottom, transparent, rgba(79, 209, 197, 0.2), transparent);
+    background: linear-gradient(to bottom, transparent, rgba(255, 24, 79, 0.34), transparent);
     animation: scan-line 3.2s linear infinite;
   }
 

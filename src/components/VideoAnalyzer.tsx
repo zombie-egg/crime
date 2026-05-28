@@ -28,14 +28,14 @@ export default function VideoAnalyzer({ caseFile, currentTime, onTimeChange }: V
       overlayCase?.clues
         .filter((clue) => clue.found && clue.aiTool === "yolo")
         .map((clue, index) => ({
-        id: `box-${clue.id}`,
-        label: labelFromClueId(clue.id),
-        confidence: clue.confidence ?? 0.82,
-        x: 16 + index * 30,
-        y: 28 + index * 12,
-        width: 22,
-        height: 20,
-        clueId: clue.id,
+          id: `box-${clue.id}`,
+          label: labelFromClueId(clue.id),
+          confidence: clue.confidence ?? 0.82,
+          x: 16 + index * 30,
+          y: 28 + index * 12,
+          width: 22,
+          height: 20,
+          clueId: clue.id,
         })) ?? [],
     [overlayCase],
   );
@@ -128,11 +128,11 @@ export default function VideoAnalyzer({ caseFile, currentTime, onTimeChange }: V
   };
 
   return (
-    <div className="border-4 border-black bg-white shadow-[8px_8px_0_#111]">
-      <div className="flex items-center justify-between border-b-4 border-black bg-[#0057b8] p-3 text-white">
+    <div className="overflow-hidden rounded-2xl border border-fuchsia-400/20 bg-white/5 shadow-[0_26px_80px_rgba(0,0,0,0.5)]">
+      <div className="flex items-center justify-between border-b border-fuchsia-400/20 bg-black/45 p-3 text-white backdrop-blur-xl">
         <div className="flex items-center gap-2 font-black">
-          <ScanLine className="h-5 w-5" />
-          视频分析区
+          <ScanLine className="h-5 w-5 text-[#ff184f]" />
+          视频分析窗
         </div>
         <div className="flex gap-2">
           <Badge variant="secondary">AI Overlay</Badge>
@@ -153,17 +153,17 @@ export default function VideoAnalyzer({ caseFile, currentTime, onTimeChange }: V
           onError={() => setFallbackMode(true)}
         />
         {fallbackMode && <FallbackScene caseId={caseFile.id} currentTime={currentTime} onTimeChange={onTimeChange} />}
-        <div className="pointer-events-none absolute left-3 top-3 z-20 max-w-[72%] border-4 border-black bg-white/95 p-2 text-xs font-black leading-5 text-black shadow-[4px_4px_0_#111]">
-          监控改编片段：请结合案情档案、AI 标注和线索本推理，不把原始素材当作唯一证据。
+        <div className="pointer-events-none absolute left-3 top-3 z-20 max-w-[72%] rounded-md border border-fuchsia-400/30 bg-black/70 p-2 text-xs font-black leading-5 text-white shadow-[0_0_24px_rgba(255,24,79,0.16)] backdrop-blur-md">
+          监控改编片段：请结合背景档案、AI 标注和线索本推理，不要把原始素材当成唯一证据。
         </div>
-        <div className="pointer-events-none absolute bottom-3 right-3 z-20 border-4 border-black bg-[#ffd500] px-3 py-2 text-xs font-black text-black shadow-[4px_4px_0_#111]">
+        <div className="pointer-events-none absolute bottom-3 right-3 z-20 rounded-md border border-fuchsia-400/30 bg-black/75 px-3 py-2 text-xs font-black text-white">
           当前帧 T+{Math.round(currentTime)}s
         </div>
         <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 z-10" aria-hidden="true" />
         <AnimatePresence>
           {scanPulse && (
             <motion.div
-              className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-48 w-48 rounded-full border-4 border-[#ffd500]"
+              className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-48 w-48 rounded-full border-2 border-[#ff184f]"
               initial={{ x: "-50%", y: "-50%", scale: 0.2, opacity: 0.8 }}
               animate={{ scale: 3.8, opacity: 0 }}
               exit={{ opacity: 0 }}
@@ -173,16 +173,16 @@ export default function VideoAnalyzer({ caseFile, currentTime, onTimeChange }: V
         </AnimatePresence>
       </div>
 
-      <div className="space-y-3 border-t-4 border-black p-4">
+      <div className="space-y-3 border-t border-fuchsia-400/20 p-4">
         {caseFile.videoCredit && (
-          <div className="border-4 border-black bg-[#f7f3e8] p-3 text-xs font-semibold leading-5 text-neutral-700">
-            真实视频素材改编：{caseFile.videoCredit.title} / {caseFile.videoCredit.source} / {caseFile.videoCredit.license}
+          <div className="rounded-md border border-fuchsia-400/20 bg-black/35 p-3 text-xs font-semibold leading-5 text-violet-100/70">
+            真实现实素材改编：{caseFile.videoCredit.title} / {caseFile.videoCredit.source} / {caseFile.videoCredit.license}
           </div>
         )}
         <div className="flex items-center gap-3">
-          <span className="w-12 text-xs font-black tabular-nums text-black">{formatTime(currentTime)}</span>
+          <span className="w-12 text-xs font-black tabular-nums text-white">{formatTime(currentTime)}</span>
           <input
-            className="h-3 min-w-0 flex-1 cursor-pointer appearance-none border-4 border-black bg-white accent-[#e60012]"
+            className="h-3 min-w-0 flex-1 cursor-pointer appearance-none rounded-full border border-fuchsia-400/35 bg-black/50 accent-[#ff184f]"
             type="range"
             min={0}
             max={duration || 120}
@@ -194,7 +194,7 @@ export default function VideoAnalyzer({ caseFile, currentTime, onTimeChange }: V
             }}
             aria-label="视频进度"
           />
-          <span className="w-12 text-right text-xs font-black tabular-nums text-black">{formatTime(duration || 120)}</span>
+          <span className="w-12 text-right text-xs font-black tabular-nums text-white">{formatTime(duration || 120)}</span>
         </div>
         <Progress value={((currentTime || 0) / (duration || 120)) * 100} />
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -234,16 +234,17 @@ function FallbackScene({
   currentTime: number;
   onTimeChange: (time: number) => void;
 }) {
-  const scene = {
-    "museum-shadow": { title: "市立博物馆 / 展厅 3", subject: "展柜", accent: "怀表" },
-    "rainy-alley": { title: "旧影院后巷 / 暴雨", subject: "雨伞", accent: "胶片盒" },
-    "harbor-signal": { title: "东港货仓 / 凌晨", subject: "叉车", accent: "红灯讯号" },
-  }[caseId] ?? { title: "监控录像", subject: "现场", accent: "证据" };
+  const scene =
+    {
+      "museum-shadow": { title: "失落展厅 / 监控 03", subject: "展柜", accent: "玻璃反光" },
+      "rainy-alley": { title: "夜雨巷口 / 远距镜头", subject: "雨伞", accent: "胶片噪点" },
+      "harbor-signal": { title: "东港货区 / 凌晨", subject: "叉车", accent: "红灯信号" },
+    }[caseId] ?? { title: "监控画面", subject: "现场", accent: "证据回放" };
 
   return (
     <button
       type="button"
-      className="absolute inset-0 z-[1] grid grid-cols-[1fr_1.2fr_.7fr] bg-white text-left"
+      className="absolute inset-0 z-[1] grid grid-cols-[1fr_1.2fr_.7fr] bg-black text-left"
       onClick={(event) => {
         const target = event.currentTarget.getBoundingClientRect();
         const ratio = event.nativeEvent.offsetX / target.width;
@@ -251,45 +252,42 @@ function FallbackScene({
       }}
       aria-label="模拟案件录像画面"
     >
-      <div className="border-r-4 border-black bg-[#ffd500]" />
-      <div className="relative flex items-center justify-center border-r-4 border-black bg-[#f7f3e8]">
+      <div className="border-r border-fuchsia-400/20 bg-[radial-gradient(circle_at_center,rgba(255,24,79,0.16),transparent_64%)]" />
+      <div className="relative flex items-center justify-center border-r border-fuchsia-400/20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_62%)]">
         <motion.div
-          className="absolute bottom-[18%] h-28 w-20 border-4 border-black bg-[#0057b8]"
+          className="absolute bottom-[18%] h-28 w-20 border border-fuchsia-400/40 bg-gradient-to-br from-[#ff184f] to-[#7c3aed] shadow-[0_0_24px_rgba(255,24,79,0.35)]"
           animate={{ x: [-120, 120, -120] }}
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         />
-        <div className="relative z-10 border-4 border-black bg-white p-5 shadow-[8px_8px_0_#111]">
-          <p className="text-xs font-black uppercase text-neutral-600">{scene.title}</p>
-          <p className="mt-2 text-3xl font-black text-black">{scene.subject}</p>
-          <p className="mt-1 text-sm font-bold text-neutral-700">{scene.accent} / T+{Math.round(currentTime)}s</p>
+        <div className="relative z-10 rounded-2xl border border-fuchsia-400/30 bg-black/80 p-5 shadow-[0_0_34px_rgba(0,0,0,0.6)]">
+          <p className="text-xs font-black uppercase text-violet-200/55">{scene.title}</p>
+          <p className="mt-2 text-3xl font-black text-white neon-text">{scene.subject}</p>
+          <p className="mt-1 text-sm font-bold text-violet-100/68">{scene.accent} / T+{Math.round(currentTime)}s</p>
         </div>
       </div>
       <div className="grid grid-rows-[1fr_1fr]">
-        <div className="border-b-4 border-black bg-[#e60012]" />
+        <div className="border-b border-fuchsia-400/20 bg-gradient-to-br from-[#ff184f] via-[#7c3aed] to-[#111827]" />
         <div className="bg-black" />
       </div>
     </button>
   );
 }
 
-function drawDetectionBoxes(
-  context: CanvasRenderingContext2D,
-  detections: DetectionBox[],
-  width: number,
-  height: number,
-) {
+function drawDetectionBoxes(context: CanvasRenderingContext2D, detections: DetectionBox[], width: number, height: number) {
   detections.forEach((box) => {
     const x = (box.x / 100) * width;
     const y = (box.y / 100) * height;
     const w = (box.width / 100) * width;
     const h = (box.height / 100) * height;
     context.save();
-    context.strokeStyle = "#ffd500";
-    context.lineWidth = 4;
+    context.strokeStyle = "#ff184f";
+    context.shadowColor = "rgba(255,24,79,0.8)";
+    context.shadowBlur = 18;
+    context.lineWidth = 3;
     context.strokeRect(x, y, w, h);
-    context.fillStyle = "#111";
+    context.fillStyle = "rgba(0,0,0,0.82)";
     context.fillRect(x, y - 30, Math.max(148, w), 28);
-    context.fillStyle = "#ffd500";
+    context.fillStyle = "#fff";
     context.font = "bold 13px Inter, sans-serif";
     context.fillText(`${box.label} ${Math.round(box.confidence * 100)}%`, x + 8, y - 11);
     context.restore();
@@ -312,14 +310,18 @@ function drawPose(context: CanvasRenderingContext2D, width: number, height: numb
   lines.forEach(([from, to]) => {
     const a = pose[from];
     const b = pose[to];
-    context.strokeStyle = "#0057b8";
+    context.strokeStyle = "#d946ef";
+    context.shadowColor = "rgba(217,70,239,0.6)";
+    context.shadowBlur = 14;
     context.beginPath();
     context.moveTo((a.x / 100) * width, (a.y / 100) * height);
     context.lineTo((b.x / 100) * width, (b.y / 100) * height);
     context.stroke();
   });
   pose.forEach((point) => {
-    context.fillStyle = "#e60012";
+    context.fillStyle = "#ff184f";
+    context.shadowColor = "rgba(255,24,79,0.8)";
+    context.shadowBlur = 12;
     context.beginPath();
     context.arc((point.x / 100) * width, (point.y / 100) * height, 5, 0, Math.PI * 2);
     context.fill();

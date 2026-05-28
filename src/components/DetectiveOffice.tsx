@@ -18,62 +18,65 @@ export default function DetectiveOffice() {
 
   return (
     <div className="space-y-6">
-      <section className="grid min-h-[280px] overflow-hidden border-4 border-black bg-white shadow-[10px_10px_0_#111] lg:grid-cols-[1.45fr_.75fr_.36fr]">
-        <div className="flex flex-col justify-between border-b-4 border-black p-6 lg:border-b-0 lg:border-r-4">
-          <div>
+      <section className="grid overflow-hidden rounded-2xl border border-fuchsia-400/25 bg-white/5 shadow-[0_30px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl lg:grid-cols-[1.45fr_.75fr_.36fr]">
+        <div className="relative flex flex-col justify-between border-b border-fuchsia-400/20 p-6 lg:border-b-0 lg:border-r">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,24,79,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(174,56,255,0.14),transparent_38%)]" />
+          <div className="relative">
             <Badge variant="danger" className="mb-5">
-              Mondrian Investigation Desk
+              Nightmare Control Room
             </Badge>
-            <h1 className="max-w-4xl text-4xl font-black leading-[0.95] tracking-normal text-black md:text-6xl">
-              用 AI 切开录像里的每一格证据
+            <h1 className="max-w-4xl text-4xl font-black leading-[0.94] tracking-normal text-white md:text-6xl neon-text">
+              在黑暗迷宫里追踪每一条活着的线索
             </h1>
-            <p className="mt-5 max-w-2xl text-base font-semibold leading-7 text-neutral-700">
-              选择案件，分析关键帧，收集线索，再提交你的最终推理。
+            <p className="mt-5 max-w-2xl text-base font-semibold leading-7 text-violet-100/75">
+              进入案件，分析视频中的异常，把物体、姿态、场景和文档线索串成一条能闭合的证据链。
             </p>
           </div>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <Stat label="玩家等级" value={`Lv.${playerLevel}`} icon={<Award className="h-5 w-5" />} tone="yellow" />
-            <Stat label="破案率" value={`${solveRate}%`} icon={<BarChart3 className="h-5 w-5" />} tone="blue" />
+          <div className="relative mt-6 grid gap-3 sm:grid-cols-3">
+            <Stat label="玩家等级" value={`Lv.${playerLevel}`} icon={<Award className="h-5 w-5" />} tone="red" />
+            <Stat label="破案率" value={`${solveRate}%`} icon={<BarChart3 className="h-5 w-5" />} tone="purple" />
             <Stat
               label="已解锁"
               value={`${cases.filter((item) => item.unlocked).length}/${cases.length}`}
               icon={<Users className="h-5 w-5" />}
-              tone="red"
+              tone="amber"
             />
           </div>
         </div>
-        <div className="grid grid-rows-[1fr_auto] border-b-4 border-black lg:border-b-0 lg:border-r-4">
-          <Card className="border-0 shadow-none">
+        <div className="grid grid-rows-[1fr_auto] border-b border-fuchsia-400/20 lg:border-b-0 lg:border-r">
+          <Card className="border-0 bg-white/0 shadow-none">
             <CardHeader>
-              <CardTitle className="text-black">调查档案</CardTitle>
+              <CardTitle className="text-white">调查档案</CardTitle>
               <CardDescription>本地保存成就、排行榜和案件进度。</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <div className="mb-2 flex items-center justify-between text-sm font-black text-black">
+                <div className="mb-2 flex items-center justify-between text-sm font-black text-white">
                   <span>案件进度</span>
-                  <span>{completed}/{cases.length}</span>
+                  <span>
+                    {completed}/{cases.length}
+                  </span>
                 </div>
                 <Progress value={solveRate} />
               </div>
-              <Separator />
+              <Separator className="bg-fuchsia-400/20" />
               <div className="space-y-2">
                 {achievements.map((achievement) => (
-                  <div key={achievement.id} className="flex items-start gap-3 border-4 border-black bg-white p-3">
-                    <CheckCircle2 className={`mt-0.5 h-4 w-4 ${achievement.unlocked ? "text-[#0057b8]" : "text-neutral-400"}`} />
+                  <div key={achievement.id} className="flex items-start gap-3 rounded-md border border-fuchsia-400/20 bg-black/35 p-3">
+                    <CheckCircle2 className={`mt-0.5 h-4 w-4 ${achievement.unlocked ? "text-[#ff184f]" : "text-violet-300/40"}`} />
                     <div>
-                      <p className="text-sm font-black text-black">{achievement.label}</p>
-                      <p className="text-xs font-semibold leading-5 text-neutral-600">{achievement.description}</p>
+                      <p className="text-sm font-black text-white">{achievement.label}</p>
+                      <p className="text-xs font-semibold leading-5 text-violet-100/65">{achievement.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
               {leaderboard.length > 0 && (
                 <>
-                  <Separator />
+                  <Separator className="bg-fuchsia-400/20" />
                   <div className="space-y-2">
                     {leaderboard.slice(0, 3).map((score) => (
-                      <div key={score.id} className="flex items-center justify-between text-sm font-black text-black">
+                      <div key={score.id} className="flex items-center justify-between text-sm font-black text-white">
                         <span className="truncate">{score.caseTitle}</span>
                         <span>{score.total}</span>
                       </div>
@@ -83,16 +86,16 @@ export default function DetectiveOffice() {
               )}
             </CardContent>
           </Card>
-          <div className="grid grid-cols-3 border-t-4 border-black">
-            <div className="h-16 border-r-4 border-black bg-[#e60012]" />
-            <div className="h-16 border-r-4 border-black bg-[#ffd500]" />
-            <div className="h-16 bg-[#0057b8]" />
+          <div className="grid grid-cols-3 border-t border-fuchsia-400/20">
+            <div className="h-16 bg-gradient-to-br from-[#ff184f] to-[#7c3aed]" />
+            <div className="h-16 bg-gradient-to-br from-[#ffd166] to-[#ff184f]" />
+            <div className="h-16 bg-gradient-to-br from-[#1d4ed8] to-[#7c3aed]" />
           </div>
         </div>
         <div className="hidden grid-rows-[1.2fr_.8fr_1fr] lg:grid">
-          <div className="border-b-4 border-black bg-[#ffd500]" />
-          <div className="border-b-4 border-black bg-white" />
-          <div className="bg-[#0057b8]" />
+          <div className="border-b border-fuchsia-400/20 bg-[radial-gradient(circle_at_top,rgba(255,24,79,0.16),transparent_64%)]" />
+          <div className="border-b border-fuchsia-400/20 bg-[radial-gradient(circle_at_center,rgba(174,56,255,0.08),transparent_60%)]" />
+          <div className="bg-[radial-gradient(circle_at_bottom,rgba(255,255,255,0.06),transparent_55%)]" />
         </div>
       </section>
 
@@ -114,15 +117,20 @@ function Stat({
   label: string;
   value: string;
   icon: ReactNode;
-  tone: "red" | "yellow" | "blue";
+  tone: "red" | "purple" | "amber";
 }) {
-  const toneClass = tone === "red" ? "bg-[#e60012] text-white" : tone === "yellow" ? "bg-[#ffd500] text-black" : "bg-[#0057b8] text-white";
+  const toneClass =
+    tone === "red"
+      ? "bg-gradient-to-br from-[#ff184f] to-[#7c3aed] text-white"
+      : tone === "amber"
+        ? "bg-gradient-to-br from-[#f59e0b] to-[#ff184f] text-white"
+        : "bg-gradient-to-br from-[#7c3aed] to-[#ff4fd8] text-white";
   return (
-    <div className="grid grid-cols-[52px_1fr] border-4 border-black bg-white">
-      <div className={`flex items-center justify-center border-r-4 border-black ${toneClass}`}>{icon}</div>
+    <div className="grid grid-cols-[52px_1fr] overflow-hidden rounded-xl border border-fuchsia-400/20 bg-black/35">
+      <div className={`flex items-center justify-center ${toneClass}`}>{icon}</div>
       <div className="p-3">
-        <p className="text-xs font-black uppercase text-neutral-600">{label}</p>
-        <p className="text-2xl font-black text-black">{value}</p>
+        <p className="text-xs font-black uppercase text-violet-200/55">{label}</p>
+        <p className="text-2xl font-black text-white">{value}</p>
       </div>
     </div>
   );
@@ -138,7 +146,6 @@ function CaseCard({
   navigate: ReturnType<typeof useNavigate>;
 }) {
   const status = caseFile.completed ? "已完成" : caseFile.unlocked ? "已解锁" : "未解锁";
-  const accent = index % 3 === 0 ? "bg-[#ffd500]" : index % 3 === 1 ? "bg-[#0057b8]" : "bg-[#e60012]";
 
   const openCase = () => {
     if (!caseFile.unlocked) return;
@@ -151,24 +158,26 @@ function CaseCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.08 }}
       whileHover={caseFile.unlocked ? { y: -4 } : undefined}
-      className={`grid min-h-[430px] grid-rows-[22px_1fr_auto] border-4 border-black bg-white shadow-[8px_8px_0_#111] ${
-        caseFile.unlocked ? "" : "opacity-60"
+      className={`relative grid min-h-[430px] grid-rows-[1fr_auto] overflow-hidden rounded-2xl border border-fuchsia-400/20 bg-white/5 shadow-[0_22px_70px_rgba(0,0,0,0.45)] ${
+        caseFile.unlocked ? "" : "opacity-55"
       }`}
     >
-      <div className={`${accent} border-b-4 border-black`} />
-      <div className="flex flex-col p-5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,24,79,0.14),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(174,56,255,0.14),transparent_36%)]" />
+      <div className="relative flex flex-col p-5">
         <div className="mb-4 flex items-center justify-between gap-2">
           <Badge variant={caseFile.completed ? "default" : caseFile.unlocked ? "cyan" : "secondary"}>{status}</Badge>
           <Badge variant="outline">{difficultyLabel(caseFile.difficulty)}</Badge>
         </div>
-        <h2 className="text-3xl font-black leading-tight text-black">{caseFile.title}</h2>
-        <p className="mt-4 min-h-[96px] text-base font-semibold leading-7 text-neutral-700">{caseFile.description}</p>
+        <div className="space-y-4">
+          <h2 className="text-3xl font-black leading-tight text-white neon-text">{caseFile.title}</h2>
+          <p className="min-h-[96px] text-base font-semibold leading-7 text-violet-100/70">{caseFile.description}</p>
+        </div>
         <div className="mt-auto space-y-4 pt-6">
           <div className="flex items-center gap-1" aria-label={`星级 ${caseFile.stars}`}>
             {Array.from({ length: 5 }).map((_, star) => (
               <Star
                 key={star}
-                className={`h-5 w-5 stroke-[2.5] ${star < caseFile.stars ? "fill-[#ffd500] text-black" : "text-neutral-400"}`}
+                className={`h-5 w-5 stroke-[2.5] ${star < caseFile.stars ? "fill-[#ff184f] text-[#ff184f]" : "text-violet-300/30"}`}
               />
             ))}
           </div>
@@ -179,7 +188,7 @@ function CaseCard({
           </div>
         </div>
       </div>
-      <div className="border-t-4 border-black p-4">
+      <div className="relative border-t border-fuchsia-400/20 p-4">
         <Button
           type="button"
           disabled={!caseFile.unlocked}

@@ -82,10 +82,10 @@ export default function AIToolbox({ caseFile, currentTime }: AIToolboxProps) {
   };
 
   return (
-    <Card className="overflow-hidden">
-      <CardHeader className="border-b-4 border-black bg-[#ffd500]">
-        <CardTitle className="flex items-center gap-2">
-          <ScanSearch className="h-5 w-5" />
+    <Card className="overflow-hidden border border-fuchsia-400/20 bg-white/5">
+      <CardHeader className="border-b border-fuchsia-400/20 bg-black/45">
+        <CardTitle className="flex items-center gap-2 text-white">
+          <ScanSearch className="h-5 w-5 text-[#ff184f]" />
           AI 工具箱
         </CardTitle>
         <CardDescription>本地模型按需加载；失败时使用案件内置分析结果。</CardDescription>
@@ -99,20 +99,20 @@ export default function AIToolbox({ caseFile, currentTime }: AIToolboxProps) {
           <ToolButton tool="imagegen" icon={<ImagePlus className="h-5 w-5" />} remaining={currentUses.imagegen} loading={loading === "imagegen"} onClick={() => runTool("imagegen")} />
         </div>
 
-        <Separator />
+        <Separator className="bg-fuchsia-400/20" />
 
         <motion.div
           key={summary}
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="border-4 border-black bg-white p-4"
+          className="rounded-xl border border-fuchsia-400/20 bg-black/35 p-4"
         >
-          <p className="text-sm font-semibold leading-6 text-neutral-700">{summary}</p>
+          <p className="text-sm font-semibold leading-6 text-violet-100/76">{summary}</p>
         </motion.div>
 
         {sceneLabels.length > 0 && (
           <div className="space-y-3">
-            <h3 className="text-sm font-black text-black">场景标签云</h3>
+            <h3 className="text-sm font-black text-white">场景标签云</h3>
             <div className="flex flex-wrap gap-2">
               {sceneLabels.map((label) => (
                 <Badge key={label.label} variant="cyan">
@@ -123,7 +123,7 @@ export default function AIToolbox({ caseFile, currentTime }: AIToolboxProps) {
             <div className="space-y-2">
               {sceneLabels.map((label) => (
                 <div key={label.label}>
-                  <div className="mb-1 flex justify-between text-xs font-black text-black">
+                  <div className="mb-1 flex justify-between text-xs font-black text-white">
                     <span>{label.label}</span>
                     <span>{Math.round(label.confidence * 100)}%</span>
                   </div>
@@ -136,15 +136,15 @@ export default function AIToolbox({ caseFile, currentTime }: AIToolboxProps) {
 
         {timeline.length > 0 && (
           <div className="space-y-3">
-            <h3 className="text-sm font-black text-black">动作时间轴</h3>
+            <h3 className="text-sm font-black text-white">动作时间轴</h3>
             <div className="space-y-2">
               {timeline.map((item) => (
-                <div key={`${item.time}-${item.label}`} className="border-4 border-black bg-white p-3">
-                  <div className="flex items-center justify-between text-sm font-black text-black">
+                <div key={`${item.time}-${item.label}`} className="rounded-xl border border-fuchsia-400/20 bg-black/35 p-3">
+                  <div className="flex items-center justify-between text-sm font-black text-white">
                     <span>{item.label}</span>
                     <span>{Math.round(item.confidence * 100)}%</span>
                   </div>
-                  <p className="text-xs font-semibold text-neutral-600">T+{Math.round(item.time)}s</p>
+                  <p className="text-xs font-semibold text-violet-100/60">T+{Math.round(item.time)}s</p>
                 </div>
               ))}
             </div>
@@ -153,19 +153,19 @@ export default function AIToolbox({ caseFile, currentTime }: AIToolboxProps) {
 
         {reconstruction && (
           <div className="space-y-3">
-            <h3 className="text-sm font-black text-black">视觉重建结果</h3>
+            <h3 className="text-sm font-black text-white">视觉重建结果</h3>
             {reconstruction.imageUrl ? (
               <img
                 src={reconstruction.imageUrl}
                 alt="AI生成的案发过程视觉重建图"
-                className="aspect-square w-full border-4 border-black object-cover"
+                className="aspect-square w-full rounded-xl border border-fuchsia-400/20 object-cover"
               />
             ) : (
-              <div className="border-4 border-black bg-[#f7f3e8] p-3 text-xs font-semibold leading-5 text-neutral-700">
+              <div className="rounded-xl border border-fuchsia-400/20 bg-black/35 p-3 text-xs font-semibold leading-5 text-violet-100/72">
                 图片接口不可用时保留提示词，可在演示报告中说明降级策略。
               </div>
             )}
-            <p className="max-h-28 overflow-y-auto border-4 border-black bg-white p-3 text-xs font-semibold leading-5 text-neutral-700">
+            <p className="max-h-28 overflow-y-auto rounded-xl border border-fuchsia-400/20 bg-black/35 p-3 text-xs font-semibold leading-5 text-violet-100/72">
               {reconstruction.prompt}
             </p>
           </div>
@@ -193,20 +193,20 @@ function ToolButton({
     <Button
       data-tool={tool}
       variant="secondary"
-      className="relative h-auto justify-start overflow-hidden p-4 text-left"
+      className="relative h-auto justify-start overflow-hidden rounded-xl border border-fuchsia-400/20 bg-black/35 p-4 text-left hover:bg-black/55"
       disabled={disabled}
       onClick={onClick}
       aria-label={`${toolLabels[tool]} 剩余 ${Number.isFinite(remaining) ? remaining : "无限"} 次`}
     >
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center border-4 border-black bg-[#0057b8] text-white">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-fuchsia-400/30 bg-gradient-to-br from-[#ff184f] to-[#7c3aed] text-white">
         {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : icon}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-sm font-black text-black">{toolLabels[tool]}</span>
-        <span className="block whitespace-normal text-xs font-semibold leading-5 text-neutral-600">{toolDescriptions[tool]}</span>
+        <span className="block text-sm font-black text-white">{toolLabels[tool]}</span>
+        <span className="block whitespace-normal text-xs font-semibold leading-5 text-violet-100/66">{toolDescriptions[tool]}</span>
       </span>
       <Badge variant={remaining <= 0 ? "danger" : "outline"}>{Number.isFinite(remaining) ? remaining : "∞"}</Badge>
-      {loading && <span className="absolute inset-0 animate-ripple border-4 border-[#e60012]" />}
+      {loading && <span className="absolute inset-0 rounded-xl border border-[#ff184f] animate-pulse" />}
     </Button>
   );
 }

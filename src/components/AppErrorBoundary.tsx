@@ -24,15 +24,15 @@ export default class AppErrorBoundary extends Component<AppErrorBoundaryProps, A
     if (!this.state.error) return this.props.children;
 
     return (
-      <div className="mx-auto max-w-3xl border-4 border-black bg-white p-6 shadow-[10px_10px_0_#111]">
-        <div className="mb-4 inline-block border-4 border-black bg-[#e60012] px-3 py-1 text-sm font-black text-white">
+      <div className="mx-auto max-w-3xl rounded-2xl border border-fuchsia-400/20 bg-[#0b0714]/96 p-6 text-white shadow-[0_30px_90px_rgba(0,0,0,0.6)]">
+        <div className="mb-4 inline-block rounded-md border border-red-500/40 bg-red-600/25 px-3 py-1 text-sm font-black text-red-50">
           Render Error
         </div>
-        <h1 className="text-3xl font-black text-black">页面组件渲染失败</h1>
-        <p className="mt-3 text-sm font-semibold leading-6 text-neutral-700">
+        <h1 className="text-3xl font-black text-white">页面组件渲染失败</h1>
+        <p className="mt-3 text-sm font-semibold leading-6 text-violet-100/72">
           我已经把错误边界加上了。当前错误信息如下，页面不会再白屏。
         </p>
-        <pre className="mt-4 max-h-56 overflow-auto border-4 border-black bg-[#f7f3e8] p-3 text-xs text-black">
+        <pre className="mt-4 max-h-56 overflow-auto rounded-xl border border-fuchsia-400/20 bg-black/35 p-3 text-xs text-violet-100/75">
           {this.state.error.message}
         </pre>
         <Button className="mt-5" onClick={() => window.location.assign("/")}>

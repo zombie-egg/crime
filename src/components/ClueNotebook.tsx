@@ -9,13 +9,15 @@ import type { Case } from "@/types/game";
 export default function ClueNotebook({ caseFile }: { caseFile: Case }) {
   const found = caseFile.clues.filter((clue) => clue.found);
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between gap-3 border-b-4 border-black bg-[#e60012] text-white">
+    <Card className="overflow-hidden border border-fuchsia-400/20 bg-white/5">
+      <CardHeader className="flex flex-row items-center justify-between gap-3 border-b border-fuchsia-400/20 bg-black/45 text-white">
         <CardTitle className="flex items-center gap-2 text-white">
-          <ClipboardList className="h-5 w-5" />
+          <ClipboardList className="h-5 w-5 text-[#ff184f]" />
           线索记录本
         </CardTitle>
-        <Badge variant="secondary">{found.length}/{caseFile.clues.length}</Badge>
+        <Badge variant="secondary">
+          {found.length}/{caseFile.clues.length}
+        </Badge>
       </CardHeader>
       <CardContent className="pt-5">
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -26,8 +28,8 @@ export default function ClueNotebook({ caseFile }: { caseFile: Case }) {
               initial={false}
               animate={{ rotateY: clue.found ? 0 : 180, opacity: 1 }}
               transition={{ duration: 0.46, delay: clue.found ? index * 0.03 : 0 }}
-              className={`min-h-[150px] border-4 border-black p-4 [transform-style:preserve-3d] ${
-                clue.found ? "bg-white" : "bg-[#f7f3e8]"
+              className={`min-h-[150px] rounded-xl border border-fuchsia-400/20 p-4 [transform-style:preserve-3d] ${
+                clue.found ? "bg-black/35" : "bg-black/20"
               }`}
             >
               {clue.found ? (
@@ -42,17 +44,17 @@ export default function ClueNotebook({ caseFile }: { caseFile: Case }) {
                           {formatTime(clue.timestamp)}
                         </Badge>
                       </div>
-                      <p className="text-sm font-black leading-6 text-black">{clue.description}</p>
+                      <p className="text-sm font-black leading-6 text-white">{clue.description}</p>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold leading-5 text-neutral-600">
+                  <p className="text-xs font-semibold leading-5 text-violet-100/70">
                     {clue.evidence ?? "证据已记录，等待交叉验证。"}
                   </p>
                 </div>
               ) : (
-                <div className="flex h-full min-h-[114px] flex-col items-center justify-center border-4 border-dashed border-black bg-white text-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                  <p className="text-sm font-black text-black">未解锁线索</p>
-                  <p className="mt-1 text-xs font-semibold text-neutral-600">使用 {toolLabel(clue.aiTool)} 分析关键帧</p>
+                <div className="flex h-full min-h-[114px] flex-col items-center justify-center rounded-lg border border-dashed border-fuchsia-400/20 bg-black/45 text-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <p className="text-sm font-black text-white">未解锁线索</p>
+                  <p className="mt-1 text-xs font-semibold text-violet-100/60">使用 {toolLabel(clue.aiTool)} 分析关键帧</p>
                 </div>
               )}
             </motion.div>
