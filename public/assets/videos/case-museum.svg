@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="博物馆案件视频素材">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#151b32"/>
+      <stop offset="1" stop-color="#080c18"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <path d="M0 560H1280V720H0z" fill="#0f172a"/>
+  <g opacity=".35" stroke="#64748b"><path d="M0 560L1280 560M120 90V560M1160 90V560M260 120V560M1020 120V560"/></g>
+  <rect x="462" y="210" width="356" height="268" rx="12" fill="#111827" stroke="#FFD93D" stroke-width="3" opacity=".78" filter="url(#glow)"/>
+  <rect x="520" y="260" width="240" height="148" rx="8" fill="#1a1f3a" stroke="#94a3b8"/>
+  <circle cx="640" cy="334" r="38" fill="none" stroke="#FFD93D" stroke-width="6"/>
+  <path d="M820 482 l96 18 l-8 24 l-96 -18z" fill="#334155" stroke="#FFD93D"/>
+  <path d="M875 304 c44 18 68 62 52 112 c-16 50 -52 76 -98 84" fill="none" stroke="#4fd1c5" stroke-width="8" opacity=".72"/>
+  <ellipse cx="880" cy="302" rx="24" ry="28" fill="#0f172a" stroke="#FFD93D"/>
+  <text x="40" y="60" fill="#FFD93D" font-family="Arial" font-size="28">CAM 03 · 00:41</text>
+  <text x="40" y="98" fill="#94a3b8" font-family="Arial" font-size="20">MUSEUM NIGHT MODE</text>
+</svg>

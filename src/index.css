@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 42% 94%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 50 100% 50%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 4%;
+    --muted: 45 24% 88%;
+    --muted-foreground: 0 0% 28%;
+    --accent: 212 100% 36%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 356 100% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 4%;
+    --input: 0 0% 4%;
+    --ring: 50 100% 50%;
+    --radius: 0rem;
+  }
+
+  .light {
+    --background: 218 36% 95%;
+    --foreground: 226 35% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 226 35% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 35% 12%;
+    --primary: 47 100% 52%;
+    --primary-foreground: 226 35% 12%;
+    --secondary: 216 24% 88%;
+    --secondary-foreground: 226 35% 12%;
+    --muted: 216 24% 88%;
+    --muted-foreground: 218 15% 38%;
+    --accent: 177 55% 42%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 350 75% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 20% 78%;
+    --input: 216 20% 78%;
+    --ring: 47 100% 52%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-width: 320px;
+    overflow-y: auto;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgba(255, 213, 0, 0.5);
+  }
+}
+
+@layer utilities {
+  .glass {
+    border: 4px solid #111;
+    background: #fff;
+  }
+
+  .mondrian-paper {
+    background-image:
+      linear-gradient(#111 4px, transparent 4px),
+      linear-gradient(90deg, #111 4px, transparent 4px);
+    background-size: 160px 128px;
+    background-position: -4px -4px;
+  }
+
+  .noir-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .scanlines::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.04) 0,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 2px,
+      transparent 5px
+    );
+    mix-blend-mode: screen;
+  }
+
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -40%;
+    height: 38%;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(79, 209, 197, 0.2), transparent);
+    animation: scan-line 3.2s linear infinite;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
